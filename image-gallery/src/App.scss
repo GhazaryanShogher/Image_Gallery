@@ -9,7 +9,11 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.btn{
+  position: sticky;
+  top: 100px;
+  
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

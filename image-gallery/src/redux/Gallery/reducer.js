@@ -9,8 +9,7 @@ import {
 const initial_state={
     data:[],
     error:'',
-    loader:false,
-    page:0,
+    page:1,
 }
 export const getImageGallery = (state = initial_state, action)=>{
     switch(action.type){
@@ -21,7 +20,7 @@ export const getImageGallery = (state = initial_state, action)=>{
         case GET_IMAGES_ACTION_FAILURE:
             return {...state, error: action.payload};
         case REFRESH_IMAGES_ACTION_REFRESH:
-            return {...state, loader: true, page:initial_state.page+1,refresh:[...action.payload]}
+            return {...state, loader: true, page:state.page +1,data:[...state.data,...action.payload]}
         case REFRESH_IMAGES_ACTION_REQUEST:
             return {...state, loader: true};
         case REFRESH_IMAGES_ACTION_FAILURE:

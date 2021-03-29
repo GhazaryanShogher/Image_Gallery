@@ -1,5 +1,4 @@
 import React from 'react';
-import './container.scss'
 
 function Grid(){
     return(

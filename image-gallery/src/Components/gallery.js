@@ -6,46 +6,39 @@ import Loader from './Loader/loader';
 import Grid from './Grid/container';
 import { getImagesAction,refreshImagesAction } from './../redux/Gallery/actions';
 
-
-
 function Gallery(){
     const images = useSelector(state=>state.imageGallery.data);
-    const images1 = useSelector(state=>state);
+    const curentPage = useSelector(state=>state.imageGallery.page);
     const dispatch = useDispatch(); 
-    const grid = document.getElementById('grid');
-    console.log(window.scrollY)
+
+    document.addEventListener('scroll', ()=> {
+      if(window.innerHeight == Math.round(window.scrollY)){
+        dispatch(refreshImagesAction(curentPage))
+      }
+    });    
+      
     const pullDown = ()=>{
-      console.log(images)
-      console.log("images1",images1)
-    
-          
+      dispatch(refreshImagesAction(curentPage))
     }
 
-    useEffect(()=>{
+    useEffect(()=>{        
       dispatch(getImagesAction())
-    //  if(window.innerHeight==Math.round(window.scrollY))
-    // return(  
-    // <Grid>{
-    //     images.refresh.map((v,i)=>{
-    //       <Card key={i} src={v.download_url}/>
-    //     })
-    //   }
-    // </Grid>)     
-    
   },[]);
+  useEffect(()=>{
     
+  },[images])
     return(
       <div>
-         {/* <button onClick={pullDown}>Get Images</button> */}
+         <button onClick={pullDown} className="btn">Get Images</button>
     
      {/* // <h1>Hello</h1> */}
    
     {/* // <button>Refresh Images</button></div>) */} 
     {images == undefined? (<Loader/>):
         (images.map((v, index) => (
-        <Card key={v.id} src={v.download_url}/> 
+        <Card key={v.index} src={v.download_url}/> 
         )))}
-        <Loader/>
+        <div><Loader/></div>
         </div>     
 )}
 export default Gallery;

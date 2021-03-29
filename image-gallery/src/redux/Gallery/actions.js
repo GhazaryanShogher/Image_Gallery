@@ -41,9 +41,9 @@ export const  getImagesAction =  () => {
       }
     };
   
-  export const  refreshImagesAction =  () => {
+  export const  refreshImagesAction =  (page) => {
     return (dispatch) => {
-      getImagesService(`https://picsum.photos/v2/list?page=1&limit=100`)
+      getImagesService(`https://picsum.photos/v2/list?page=${page}&limit=100`)
         .then(response => {
           // Parse the result
           // save to redux

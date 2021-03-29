@@ -12,7 +12,8 @@
 .btn{
   position: sticky;
   top: 100px;
-  
+  display: block;
+
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

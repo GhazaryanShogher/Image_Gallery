@@ -36,7 +36,7 @@ function Gallery(){
     {/* // <button>Refresh Images</button></div>) */} 
     {images == undefined? (<Loader/>):
         (images.map((v, index) => (
-        <Card key={v.index} src={v.download_url}/> 
+        <Card key={v.id} src={v.download_url}/> 
         )))}
         <div><Loader/></div>
         </div>     

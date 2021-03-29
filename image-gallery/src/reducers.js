@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
-import imageGallery from './redux/Gallery/reducer';
+import {imageGallery, imageGalleryError, imageGalleryLoader, refreshGallery} from './redux/Gallery/reducer';
 
 
 const rootReducer = combineReducers({
-    allShowenImages:imageGallery,  
+    allShowenImages:imageGallery, 
+    error:imageGalleryError,
+    loader:imageGalleryLoader,
+    refresh:refreshGallery
 })
 
 export default rootReducer

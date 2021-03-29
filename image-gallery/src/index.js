@@ -7,11 +7,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import {Provider} from 'react-redux';
-import { getImagesAction } from './redux/Gallery/actions'
+import { getImagesAction,refreshImageGallery } from './redux/Gallery/actions'
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.dispatch(getImagesAction());
+store.dispatch(refreshImageGallery());
  export default store;
 
 ReactDOM.render(

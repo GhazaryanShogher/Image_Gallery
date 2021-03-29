@@ -9,8 +9,6 @@ function App() {
   return (
     <div className="App">
         <h1>Image Gallery</h1>
-        <button onClick={()=>getImagesAction(dispatch)}>Get Data</button>
-        <button onClick={()=>getImagesService()}>Get Data2</button>
         <Gallery/>
        {/* <Card src={"https://picsum.photos/id/10/2500/1667"}/>
        <Card src={"https://picsum.photos/id/1000/5626/3635"}/>

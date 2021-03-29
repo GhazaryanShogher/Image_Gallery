@@ -1,16 +1,17 @@
 import {
-    REQUEST_ACTION_TYPE,
-    SUCCESS_ACTION_TYPE,
-    FAILURE_ACTION_TYPE,
-    REFRESH_ACTION_TYPE
+    GET_IMAGES_ACTION_REQUEST,
+    GET_IMAGES_ACTION_SUCCESS,
+    GET_IMAGES_ACTION_FAILURE,
+    REFRESH_IMAGES_ACTION_REQUEST,
+    REFRESH_IMAGES_ACTION_REFRESH,
+    REFRESH_IMAGES_ACTION_FAILURE
 } from './actionTypes';
 import { getImagesService } from './services';
-import axios from 'axios';
 
 export const  getImagesAction =  () => {
     return (dispatch) => {
         dispatch(request());
-        return axios.get(`https://picsum.photos/v2/list`)
+        getImagesService(`https://picsum.photos/v2/list`)
         .then(response => {
           // Parse the result
           // save to redux
@@ -24,26 +25,25 @@ export const  getImagesAction =  () => {
   }
     function request() {
       return {
-        type: REQUEST_ACTION_TYPE
+        type: GET_IMAGES_ACTION_REQUEST
       }
     }
     function success(data) {
       return {
-        type: SUCCESS_ACTION_TYPE,
+        type: GET_IMAGES_ACTION_SUCCESS,
         payload:data
       }
     }
     function failure(error) {
       return {
-        type: FAILURE_ACTION_TYPE,
+        type: GET_IMAGES_ACTION_FAILURE,
         payload:error
       }
-    }
+    };
   
-  
-  export const  refreshImageGallery =  () => {
+  export const  refreshImagesAction =  () => {
     return (dispatch) => {
-        return axios.get(`https://picsum.photos/v2/list?page=1&limit=100`)
+      getImagesService(`https://picsum.photos/v2/list?page=1&limit=100`)
         .then(response => {
           // Parse the result
           // save to redux
@@ -54,11 +54,23 @@ export const  getImagesAction =  () => {
           // Some error handling logic
         })
     }
+    function request() {
+      return {
+        type: REFRESH_IMAGES_ACTION_REQUEST
+      }
+    }
     function refresh(data) {
       return {
-        type:REFRESH_ACTION_TYPE,
+        type:REFRESH_IMAGES_ACTION_REFRESH,
         payload:data
       }
     }
+    function failure(error) {
+      return {
+        type: REFRESH_IMAGES_ACTION_FAILURE,
+        payload:error
+      }
+    }
+  
   }
   

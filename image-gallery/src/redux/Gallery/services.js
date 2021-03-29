@@ -1,6 +1,5 @@
 import axios from 'axios';
 
 export const getImagesService=(url)=>{
-    axios
-		.get(`${url}`)
+   return axios.get(`${url}`)
 }

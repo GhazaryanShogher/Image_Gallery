@@ -10,25 +10,25 @@ import Grid from './Grid/grid';
 function Gallery(){
     const images = useSelector(state=>state);
     const dispatch = useDispatch(); 
-    console.log(images.loader)
+    const grid = document.getElementById('grid');
+    console.log(window.scrollY)
     const pullDown = ()=>{
       dispatch(refreshImageGallery());
-      return(
-        <Grid>
-          {
-            images.refresh.map((v,i)=>{
-              <Card key={i} src={v.download_url}/>
-            })
-          }
-        </Grid>
-      )
-      
+          
     }
 
     useEffect(()=>{
-     
-    })
-
+     if(window.innerHeight==Math.round(window.scrollY)){
+    return(  
+    <Grid>{
+        images.refresh.map((v,i)=>{
+          <Card key={i} src={v.download_url}/>
+        })
+      }
+    </Grid>)     
+    }
+  });
+    
     return(
         <InfiniteScroll
   dataLength={10} //This is important field to render the next data
@@ -41,7 +41,7 @@ function Gallery(){
       <b>Yay! You have seen it all</b>
     </p>
   }
-  below props only if you need pull down functionality
+  
   refreshFunction={pullDown}
   pullDownToRefresh
   pullDownToRefreshThreshold={99}

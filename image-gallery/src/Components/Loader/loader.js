@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import loader from './../Images/loader.gif';
 
 function Loader(props){
     return(
-        <img src={loader} style={{display:props.display}}/>
+        <div style={{display:props.display,justifyContent:"center"}}>
+            <img src={loader}/>
+        </div>
 )}
 
 export default Loader;

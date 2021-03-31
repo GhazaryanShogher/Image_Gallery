@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import InfiniteScroll  from 'react-infinite-scroll-component';
 import Card from './Image Card/card';
 import Loader from './Loader/loader';
-import { getImagesAction,refreshImagesAction } from './../redux/Gallery/actions';
+import { refreshImagesAction } from './../redux/Gallery/actions';
 
 function Gallery(){
     const images = useSelector(state=>state.imageGallery.data);
@@ -11,8 +11,7 @@ function Gallery(){
     const loader = useSelector(state=>state.imageGallery.loader);
     const dispatch = useDispatch(); 
 
-    useEffect(()=>{        
-      console.log( typeof curentPage)
+    useEffect(()=>{ 
       dispatch(refreshImagesAction(curentPage));
   },[]);
   useEffect(()=>{

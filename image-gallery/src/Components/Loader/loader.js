@@ -1,4 +1,3 @@
-// import React, { useEffect } from 'react';
 import loader from './../Images/loader.gif';
 
 function Loader(props){
